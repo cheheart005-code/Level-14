@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Level 14 Unlocked 🎮⚽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e18; --bg2:#121833;
+  --lime:#c6ff3c; --blue:#2fd3ff; --pink:#ff4fa3; --orange:#ff8a3d;
+  --text:#f4f6ff; --muted:#a9b0cc;
+  --font-d:'Teko',Impact,'Arial Narrow',sans-serif;
+  --font-b:'Rubik',-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0a0e18; } }
+:root[data-theme="dark"]{ --bg:#0a0e18; }
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background:var(--bg); color:var(--text); font-family:var(--font-b);
+  overflow-x:hidden; width:100%;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+h1,h2,h3{ font-family:var(--font-d); margin:0; font-weight:600; letter-spacing:.01em; }
+p{ margin:0; }
+section{ position:relative; width:100%; overflow:hidden; padding:90px 20px; }
+.wrap{ width:100%; max-width:620px; margin:0 auto; text-align:center; }
+
+/* ---------- HERO ---------- */
+#hero{
+  min-height:100svh; display:flex; align-items:center; justify-content:center;
+  background:
+    repeating-linear-gradient(135deg, rgba(198,255,60,.05) 0 2px, transparent 2px 26px),
+    radial-gradient(ellipse at 20% 15%, rgba(47,211,255,.25), transparent 55%),
+    radial-gradient(ellipse at 85% 80%, rgba(255,79,163,.22), transparent 55%),
+    var(--bg);
+}
+.spark{ position:absolute; width:8px; height:8px; opacity:.7; animation:float 7s ease-in-out infinite; }
+@keyframes float{ 0%,100%{ transform:translateY(0) rotate(0deg);} 50%{ transform:translateY(-26px) rotate(45deg);} }
+
+.corner-photo{
+  position:absolute; z-index:3; width:clamp(84px,22vw,128px); aspect-ratio:3/4;
+  padding:8px; border-radius:6px; background:rgba(255,245,248,.93);
+  box-shadow:0 14px 30px rgba(0,0,0,.4);
+}
+.corner-photo img{ display:block; width:100%; height:100%; object-fit:cover; border-radius:3px; background:#1b2340; }
+.corner-photo.is-empty{
+  background:rgba(255,255,255,.06); border:2px dashed rgba(198,255,60,.45); box-shadow:none;
+  display:flex; align-items:center; justify-content:center;
+}
+.corner-photo.is-empty img{ display:none; }
+.corner-photo.is-empty::after{
+  content:attr(data-slot); font-size:10.5px; color:var(--lime); text-align:center; padding:0 6px; opacity:.85; line-height:1.4;
+}
+.corner-tl{ top:9%; left:6%; transform:rotate(-4deg); }
+.corner-tr{ top:7%; right:6%; transform:rotate(4deg); }
+.corner-bl{ bottom:11%; left:5%; transform:rotate(3deg); }
+.corner-br{ bottom:9%; right:6%; transform:rotate(-3deg); }
+@media (max-width:480px){ .corner-photo{ width:clamp(70px,20vw,100px); padding:6px; } }
+
+.eyebrow{ font-size:14px; letter-spacing:.14em; color:var(--lime); font-weight:700; text-transform:uppercase; margin-bottom:10px; }
+.level{
+  font-size:clamp(90px,26vw,170px); line-height:.85; font-weight:700;
+  background:linear-gradient(135deg,var(--lime),var(--blue) 55%,var(--pink));
+  -webkit-background-clip:text; background-clip:text; color:transparent; margin:0 0 6px;
+}
+.hero-title{ font-size:clamp(26px,6vw,40px); font-weight:600; margin-bottom:12px; }
+.hero-sub{ font-size:16px; color:var(--muted); max-width:380px; margin:0 auto 30px; line-height:1.55; }
+.xp-track{ width:min(300px,80%); height:10px; margin:0 auto; border-radius:999px; background:rgba(255,255,255,.1); overflow:hidden; }
+.xp-fill{ height:100%; width:0%; border-radius:999px; background:linear-gradient(90deg,var(--lime),var(--blue)); animation:fillXP 1.6s 2.6s ease forwards; }
+@keyframes fillXP{ to{ width:100%; } }
+.xp-label{ font-size:12px; color:var(--muted); margin-top:8px; letter-spacing:.06em; }
+
+.sequence{ position:relative; min-height:clamp(240px,40vh,360px); width:100%; }
+.scene{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:stretch; justify-content:center; opacity:0; }
+.scene-match{ animation:sceneFade 2.6s ease forwards; }
+.scene-xp{ animation:sceneFade 3s 2.3s ease forwards; }
+.scene-level{ animation:sceneIn .9s 5.1s ease forwards; transform:scale(.92); }
+@keyframes sceneFade{ 0%{opacity:0;} 10%{opacity:1;} 85%{opacity:1;} 100%{opacity:0;} }
+@keyframes sceneIn{ to{ opacity:1; transform:scale(1); } }
+.score{ font-family:var(--font-d); font-size:clamp(58px,14vw,88px); line-height:1; }
+.score span{ color:var(--muted); margin:0 10px; font-size:.6em; }
+.score-label{ color:var(--muted); font-size:14px; letter-spacing:.08em; margin-top:6px; }
+.motm{ margin-top:14px; font-size:14px; color:var(--lime); font-weight:700; }
+.xp-gain{ font-family:var(--font-d); font-size:clamp(38px,9vw,54px); color:var(--blue); margin-bottom:4px; }
+
+/* ---------- PLAYER CARD ---------- */
+#card{ background:var(--bg2); }
+.card-box{
+  max-width:360px; margin:0 auto; border-radius:18px; padding:26px 22px 22px;
+  background:linear-gradient(160deg,#182048,#0e1430);
+  border:1px solid rgba(255,255,255,.08); box-shadow:0 20px 50px rgba(0,0,0,.45);
+  position:relative;
+}
+.ovr{
+  position:absolute; top:16px; right:18px; font-family:var(--font-d); font-size:30px; color:var(--lime);
+  line-height:1;
+}
+.ovr span{ display:block; font-family:var(--font-b); font-size:10px; color:var(--muted); font-weight:500; }
+.card-box h2{ font-size:28px; text-align:left; margin-bottom:18px; }
+.stat{ text-align:left; margin-bottom:14px; }
+.stat:last-child{ margin-bottom:0; }
+.stat-row{ display:flex; justify-content:space-between; font-size:13px; color:var(--muted); margin-bottom:5px; }
+.stat-row b{ color:var(--text); font-weight:600; }
+.bar-track{ height:8px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; }
+.bar-fill{ height:100%; width:var(--w); border-radius:999px; background:var(--c); animation:fillBar 1.4s ease forwards; transform-origin:left; }
+@keyframes fillBar{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+
+/* ---------- QUESTS ---------- */
+#quests{ background:var(--bg); }
+.section-head{ margin-bottom:46px; }
+.section-head h2{ font-size:clamp(30px,6vw,40px); }
+.section-head p{ color:var(--muted); margin-top:8px; font-size:15px; }
+.quest-list{ display:grid; gap:14px; text-align:left; }
+.quest{
+  display:flex; gap:14px; align-items:flex-start; padding:16px 18px; border-radius:14px;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
+}
+.quest .icon{ font-size:22px; line-height:1; }
+.quest h3{ font-family:var(--font-b); font-size:15.5px; font-weight:700; margin-bottom:4px; }
+.quest p{ font-size:14px; color:var(--muted); line-height:1.55; }
+
+/* ---------- FINALE ---------- */
+#finale{
+  min-height:100svh; display:flex; align-items:center; justify-content:center;
+  background:
+    radial-gradient(ellipse at 25% 20%, rgba(255,138,61,.22), transparent 55%),
+    radial-gradient(ellipse at 80% 85%, rgba(47,211,255,.22), transparent 55%),
+    var(--bg2);
+}
+.finale-eyebrow{ font-size:13px; letter-spacing:.16em; color:var(--orange); font-weight:700; text-transform:uppercase; margin-bottom:10px; }
+#finale h2{ font-size:clamp(28px,6vw,42px); margin-bottom:16px; }
+#finale p.msg{ font-size:16px; color:var(--muted); max-width:400px; margin:0 auto 24px; line-height:1.6; }
+.sig{ font-family:var(--font-d); font-size:22px; color:var(--lime); margin-bottom:30px; }
+.go-btn{
+  background:linear-gradient(135deg,var(--lime),var(--blue));
+  color:#0a0e18; border:none; padding:14px 30px; border-radius:999px;
+  font-family:var(--font-b); font-weight:700; font-size:15px; cursor:pointer;
+}
+.confetti{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.confetti span{
+  position:absolute; top:-5%; width:8px; height:14px; opacity:0;
+  border-radius:2px;
+}
+.confetti.go span{ animation:drop 1.6s ease-in forwards; }
+@keyframes drop{ 0%{ opacity:1; transform:translateY(0) rotate(0deg);} 100%{ opacity:0; transform:translateY(110vh) rotate(360deg);} }
+
+@media (prefers-reduced-motion:reduce){
+  .spark,.xp-fill,.bar-fill,.confetti.go span,.scene{ animation:none !important; }
+  .xp-fill{ width:100%; } .bar-fill{ transform:scaleX(1); }
+  .scene-match,.scene-xp{ display:none; }
+  .scene-level{ position:static; opacity:1; transform:none; }
+  .sequence{ min-height:auto; }
+}
+</style>
+</head>
+<body>
+
+<section id="hero">
+  <div class="spark" style="left:12%;top:22%;background:var(--lime);animation-delay:0s;"></div>
+  <div class="spark" style="left:82%;top:18%;background:var(--pink);animation-delay:1.2s;"></div>
+  <div class="spark" style="left:75%;top:68%;background:var(--blue);animation-delay:2.1s;"></div>
+  <div class="spark" style="left:18%;top:72%;background:var(--orange);animation-delay:.6s;"></div>
+
+  <figure class="corner-photo corner-tl" data-slot="add photos/praise-1.jpg">
+    <img src="photos/praise-1.jpg" alt="Praise" onerror="this.parentElement.classList.add('is-empty')">
+  </figure>
+  <figure class="corner-photo corner-tr" data-slot="add photos/praise-2.jpg">
+    <img src="photos/praise-2.jpg" alt="Praise" onerror="this.parentElement.classList.add('is-empty')">
+  </figure>
+  <figure class="corner-photo corner-bl" data-slot="add photos/praise-3.jpg">
+    <img src="photos/praise-3.jpg" alt="Praise" onerror="this.parentElement.classList.add('is-empty')">
+  </figure>
+  <figure class="corner-photo corner-br" data-slot="add photos/praise-4.jpg">
+    <img src="photos/praise-4.jpg" alt="Praise" onerror="this.parentElement.classList.add('is-empty')">
+  </figure>
+
+  <div class="wrap">
+    <div class="sequence">
+      <div class="scene scene-match">
+        <p class="eyebrow">Full Time Whistle</p>
+        <div class="score">3<span>–</span>2</div>
+        <p class="score-label">Real Madrid vs Barcelona</p>
+        <p class="motm">⭐ Praise's hat-trick of long-range screamers wins it for Madrid</p>
+      </div>
+      <div class="scene scene-xp">
+        <p class="eyebrow">Hat-Trick Bonus</p>
+        <p class="xp-gain">+2,400 XP</p>
+        <div class="xp-track"><div class="xp-fill"></div></div>
+        <p class="xp-label">LEVEL 13 → LEVEL 14</p>
+      </div>
+      <div class="scene scene-level">
+        <p class="eyebrow">Achievement Unlocked</p>
+        <h1 class="level">14</h1>
+        <h2 class="hero-title">Happy Birthday, Praise 🎮⚽</h2>
+        <p class="hero-sub">Controller in one hand, boots in the other — let's run it back for another year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="card">
+  <div class="card-box">
+    <div class="ovr">99<span>OVR</span></div>
+    <h2>Player Card</h2>
+    <div class="stat">
+      <div class="stat-row"><span>Energy</span><b>99</b></div>
+      <div class="bar-track"><div class="bar-fill" style="--w:99%;--c:var(--lime);"></div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-row"><span>Game Sense</span><b>95</b></div>
+      <div class="bar-track"><div class="bar-fill" style="--w:95%;--c:var(--blue);"></div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-row"><span>Banter</span><b>97</b></div>
+      <div class="bar-track"><div class="bar-fill" style="--w:97%;--c:var(--pink);"></div></div>
+    </div>
+    <div class="stat">
+      <div class="stat-row"><span>Heart</span><b>100</b></div>
+      <div class="bar-track"><div class="bar-fill" style="--w:100%;--c:var(--orange);"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="quests">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Side Quests for Level 14</h2>
+      <p>A few things from your corner — no skips allowed.</p>
+    </div>
+    <div class="quest-list">
+      <div class="quest">
+        <span class="icon">🎮</span>
+        <div><h3>Grind smart</h3><p>Getting good at anything — a game, a sport, a skill — is just showing up after it stops being fun. That's the part that actually levels you up.</p></div>
+      </div>
+      <div class="quest">
+        <span class="icon">⚽</span>
+        <div><h3>Play for the team</h3><p>The best players aren't just the ones scoring. Be the one who makes everyone around him better.</p></div>
+      </div>
+      <div class="quest">
+        <span class="icon">🔥</span>
+        <div><h3>Lose like a pro</h3><p>You won't win every match. The ones who go far are just the ones who queue up again anyway.</p></div>
+      </div>
+      <div class="quest">
+        <span class="icon">👑</span>
+        <div><h3>Back yourself</h3><p>You don't need anyone's permission to be confident. Go for it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="finale">
+  <div class="confetti go" id="confetti">
+    <span style="left:5%; background:var(--lime); animation-delay:0s;"></span>
+    <span style="left:14%; background:var(--pink); animation-delay:.15s;"></span>
+    <span style="left:23%; background:var(--blue); animation-delay:.05s;"></span>
+    <span style="left:33%; background:var(--orange); animation-delay:.25s;"></span>
+    <span style="left:44%; background:var(--lime); animation-delay:.1s;"></span>
+    <span style="left:54%; background:var(--pink); animation-delay:.3s;"></span>
+    <span style="left:63%; background:var(--blue); animation-delay:0s;"></span>
+    <span style="left:72%; background:var(--orange); animation-delay:.2s;"></span>
+    <span style="left:81%; background:var(--lime); animation-delay:.35s;"></span>
+    <span style="left:90%; background:var(--pink); animation-delay:.15s;"></span>
+    <span style="left:38%; background:var(--blue); animation-delay:.4s;"></span>
+    <span style="left:68%; background:var(--orange); animation-delay:.08s;"></span>
+  </div>
+  <div class="wrap">
+    <p class="finale-eyebrow">Full Time</p>
+    <h2>Happy 14th Birthday, Praise 🏆</h2>
+    <p class="msg">Here's to another year of controllers, cleats, and causing chaos. Proud of you, always in your corner.</p>
+    <p class="sig">— Sunny</p>
+    <button class="go-btn" id="celebrate" type="button">🎉 Run It Back</button>
+  </div>
+</section>
+
+<script>
+var btn = document.getElementById('celebrate');
+var confetti = document.getElementById('confetti');
+btn.addEventListener('click', function(){
+  confetti.classList.remove('go');
+  void confetti.offsetWidth;
+  confetti.classList.add('go');
+});
+</script>
+</body>
+</html>
